@@ -9,13 +9,12 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.apache.log4j.Logger;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Component;
 
 import com.socket.util.SessionUtil;
 
 @ServerEndpoint("/flyfishWebSocket/{userId}")
-@SpringBootApplication
+@Component
 public class WebSocket {
 	
 	public static final Logger log = Logger.getLogger(WebSocket.class);
@@ -49,8 +48,5 @@ public class WebSocket {
 		finally{
 			SessionUtil.remove(userId);
 		}
-	}
-	public static void main(String[] args) {
-		SpringApplication.run(WebSocket.class, args);
 	}
 }

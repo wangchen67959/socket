@@ -21,16 +21,17 @@ public class WebSocket {
 	
 	@OnOpen
 	public void open(Session session, @PathParam("userId") String userId) {
-		System.out.println("websocket 链接了");
+		log.info(userId + "已链接成功");
 		if(!SessionUtil.hasKey(userId)) {
 			SessionUtil.put(userId, session);
+			SessionUtil.addOnlineCount();
 		}
-		System.out.println(SessionUtil.get(userId));
+		log.info("当前已连接个数为:" + SessionUtil.getOnlineCount());
 	}
 
 	@OnMessage
 	public void inMessage(String message) {
-		System.out.println(message);
+		log.info(message);
 	}
 
 	@OnClose
@@ -43,10 +44,13 @@ public class WebSocket {
 				s.close();
 			}
 		} catch (Exception e) {
-			log.error("关闭session异常"+reason.getReasonPhrase(), e);
+			log.error("关闭session异常", e);
 		}
 		finally{
 			SessionUtil.remove(userId);
+			SessionUtil.subOnlineCount();
 		}
 	}
+	
+	
 }

@@ -24,6 +24,7 @@ public class UseSocketImpl implements UseSocket{
 			}
 		} catch (Exception e) {
 			SessionUtil.remove(userId);
+			SessionUtil.subOnlineCount();
 			log.error("发送消息异常", e);
 		}
 	}

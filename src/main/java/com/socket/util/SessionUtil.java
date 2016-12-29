@@ -3,8 +3,6 @@ package com.socket.util;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.socket.controller.WebSocket;
-
 public class SessionUtil {
 	// 存放session
 	private static Map<String, Object> map = new ConcurrentHashMap<String, Object>();

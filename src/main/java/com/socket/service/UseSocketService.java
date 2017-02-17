@@ -1,13 +1,13 @@
 package com.socket.service;
 
-public interface UseSocket {
+public interface UseSocketService {
 
 	/**
 	 * 推送消息
 	 * @param userId 用户id
 	 * @param data json数据 
 	 */
-	public void sedMessage(String userId, String data)  throws Exception;
+	public void sedMessage(String userId, String data);
 	
 	/**
 	 * 校验是用户是否存在session

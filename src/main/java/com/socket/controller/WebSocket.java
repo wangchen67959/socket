@@ -21,6 +21,7 @@ public class WebSocket {
 	
 	@OnOpen
 	public void open(Session session, @PathParam("userId") String userId) {
+		System.out.println("进来了啊 ");
 		log.info(userId + "已链接成功");
 		if(!SessionUtil.hasKey(userId)) {
 			SessionUtil.put(userId, session);

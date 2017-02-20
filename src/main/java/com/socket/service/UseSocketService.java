@@ -1,6 +1,6 @@
 package com.socket.service;
 
-public interface UseSocket {
+public interface UseSocketService {
 
 	/**
 	 * 推送消息

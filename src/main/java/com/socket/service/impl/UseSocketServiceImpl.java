@@ -5,12 +5,12 @@ import javax.websocket.Session;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.socket.service.UseSocket;
+import com.socket.service.UseSocketService;
 import com.socket.util.SessionUtil;
 
-public class UseSocketImpl implements UseSocket{
+public class UseSocketServiceImpl implements UseSocketService{
 
-	public static final Log log = LogFactory.getLog(UseSocketImpl.class);
+	public static final Log log = LogFactory.getLog(UseSocketServiceImpl.class);
 	
 	public void sedMessage(String userId, String data){
 		Session session = (Session) SessionUtil.get(userId);

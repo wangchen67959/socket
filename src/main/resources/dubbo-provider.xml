@@ -6,6 +6,12 @@
         http://code.alibabatech.com/schema/dubbo  
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd  ">
 
+  <!--   <dubbo:application name="dubbo_socket"  />
+    
+    <dubbo:registry address="zookeeper://192.168.252.128:2181" />
+ 
+    <dubbo:protocol name="dubbo" port="20889" /> -->
+
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.socket.service.UseSocketService"
 		ref="useSocketService" />

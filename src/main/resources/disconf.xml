@@ -2,12 +2,16 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans  
-        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+    	http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/aop  
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- <context:component-scan base-package="com.socket" /> -->
+	<context:component-scan base-package="com.socket" />
+	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<!-- 使用disconf必须添加以下配置 -->
 	<bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
@@ -19,17 +23,18 @@
 	</bean>
 	<!--################################################################ -->
 	<!-- 使用托管方式的disconf配置(无代码侵入, 配置更改会自动reload) -->
-	<bean id="configproperties_disconf"
+	 <bean id="configproperties_disconf"
 		class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
 		<property name="locations">
 			<list>
-				<value>classpath:/conf/application.properties</value>
-				<value>classpath:/conf/log4j.properties</value>
-				<value>classpath:/conf/redis.properties</value>
-				<value>classpath:/conf/dubbo.properties</value>
+			 	<value>classpath:application.properties</value>
+				<value>classpath:log4j.properties</value>
+				<value>classpath:redis.properties</value>
+ 				<value>classpath:dubbo.properties</value>
 			</list>
 		</property>
 	</bean>
+	<!--记录配置文件与哪些bean有关系 -->
 	<bean id="propertyConfigurer"
 		class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />

@@ -3,13 +3,15 @@ package com.socket.config;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import com.baidu.disconf.client.common.annotations.DisconfFile;
 import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 import com.baidu.disconf.client.common.update.IDisconfUpdate;
 
-@Configuration
-@DisconfFile(filename = "dubbo.properties")
+//@Configuration
+@Service
+//@DisconfFile(filename = "dubbo.properties")
 public class DubboConfig implements IDisconfUpdate {
 	
 	private static final Log LOGGER = LogFactory.getLog(RedisConfig.class);
@@ -24,7 +26,7 @@ public class DubboConfig implements IDisconfUpdate {
 
 	private int protocolPort;
 
-	@DisconfFileItem(name = "dubbo.monitor.protocol", associateField = "monitor.protocol")
+	@DisconfFileItem(name = "dubbo.monitor.protocol", associateField = "monitorProtocol")
 	public String getMonitorProtocol() {
 		return monitorProtocol;
 	}
@@ -33,7 +35,7 @@ public class DubboConfig implements IDisconfUpdate {
 		this.monitorProtocol = monitorProtocol;
 	}
 
-	@DisconfFileItem(name = "dubbo.application.name", associateField = "application.name")
+	@DisconfFileItem(name = "dubbo.application.name", associateField = "applicationName")
 	public String getApplicationName() {
 		return applicationName;
 	}
@@ -42,7 +44,7 @@ public class DubboConfig implements IDisconfUpdate {
 		this.applicationName = applicationName;
 	}
 
-	@DisconfFileItem(name = "dubbo.registry.address", associateField = "registry.address")
+	@DisconfFileItem(name = "dubbo.registry.address", associateField = "registryAddress")
 	public String getRegistryAddress() {
 		return registryAddress;
 	}
@@ -51,7 +53,7 @@ public class DubboConfig implements IDisconfUpdate {
 		this.registryAddress = registryAddress;
 	}
 
-	@DisconfFileItem(name = "dubbo.protocol.name", associateField = "protocol.name")
+	@DisconfFileItem(name = "dubbo.protocol.name", associateField = "protocolName")
 	public String getProtocolName() {
 		return protocolName;
 	}
@@ -60,7 +62,7 @@ public class DubboConfig implements IDisconfUpdate {
 		this.protocolName = protocolName;
 	}
 
-	@DisconfFileItem(name = "dubbo.protocol.port", associateField = "protocol.port")
+	@DisconfFileItem(name = "dubbo.protocol.port", associateField = "protocolPort")
 	public int getProtocolPort() {
 		return protocolPort;
 	}

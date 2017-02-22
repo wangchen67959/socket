@@ -13,19 +13,16 @@
 
 	<context:component-scan base-package="com.socket" />
 	
-<!-- 	<import resource="classpath:dubbo-provider.xml" />	
- -->	<!-- 属性注入器，用于读取项目配置文件中的属性 -->
+	<!-- 属性注入器，用于读取项目配置文件中的属性 -->
 	<bean id="PropertiesConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 		 	<list>
 				<value>classpath:log4j.properties</value>
-<!-- 				<value>classpath:application.properties</value>
- -->				<!-- <value>classpath:dubbo.properties</value> -->
+ 				<value>classpath:application.properties</value>
+				<value>classpath:dubbo.properties</value>
 			</list>
 		</property>
 	</bean>
 	<bean id="useSocketService" class="com.socket.service.impl.UseSocketServiceImpl" scope="singleton" />
-	
-<!-- 	
- --></beans>
+</beans>

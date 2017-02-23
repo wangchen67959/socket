@@ -2,16 +2,24 @@ package com.socket.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.baidu.disconf.client.common.annotations.DisconfFile;
 import com.baidu.disconf.client.common.annotations.DisconfFileItem;
+import com.baidu.disconf.client.common.annotations.DisconfUpdateService;
 import com.baidu.disconf.client.common.update.IDisconfUpdate;
 
-//@Configuration
+/**
+ * 分布式配置文件，配置类，更新通知
+ * @author wangchen20097
+ *
+ */
 @Service
+@Scope("singleton")
 //@DisconfFile(filename = "dubbo.properties")
+//// 当该类更新时，执行此方法
+//@DisconfUpdateService(classes={DubboConfig.class})
 public class DubboConfig implements IDisconfUpdate {
 	
 	private static final Log LOGGER = LogFactory.getLog(RedisConfig.class);
@@ -34,7 +42,6 @@ public class DubboConfig implements IDisconfUpdate {
 	public void setMonitorProtocol(String monitorProtocol) {
 		this.monitorProtocol = monitorProtocol;
 	}
-
 	@DisconfFileItem(name = "dubbo.application.name", associateField = "applicationName")
 	public String getApplicationName() {
 		return applicationName;
